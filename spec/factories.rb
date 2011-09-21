@@ -9,9 +9,11 @@ FactoryGirl.define do
     sequence(:name) {|n| "#{n}name" }
     password "123"
     user
+    auth true
   end
   
   factory :line_item do 
+    title "title"
     url "http://www.example.com"
     account
     sent false

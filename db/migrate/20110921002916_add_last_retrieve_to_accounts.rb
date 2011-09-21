@@ -1,6 +1,6 @@
 class AddLastRetrieveToAccounts < ActiveRecord::Migration
   def self.up
-    add_column :accounts, :last_retrieve, :datetime
+    add_column :accounts, :last_retrieve, :time
   end
 
   def self.down

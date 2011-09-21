@@ -3,6 +3,7 @@ require 'net/https'
 class Account < ActiveRecord::Base
   belongs_to :user
   has_many :line_items, :dependent => :destroy
+  before_save :set_last_retrieve
   
   validates :name ,   :uniqueness => true, 
                       :length => { :within => 1..50 },
@@ -17,26 +18,51 @@ class Account < ActiveRecord::Base
     # {"status":1,"list":{
     # "915":{"item_id":"915","title":"Google","url":"http:\/\/google.com","time_updated":"1312795221","time_added":"1312795221","state":"0"}
     # "since":1316567382,"complete":1}
-    response = Account.request(:retrieve, {:name => self.name, :password => self.password})
-    items = ActiveSupport::JSON.decode(response)
-    # Item id in local databse will match ReadItLater id
-    items['list'].each_value do |item|
-      # Protect against a bad response
-      if item['item_id']
-        LineItem.create(:account_id => self.id, :id => item['item_id'].to_i, :title => item['title'], :url => item['url'])
+    # Prevent unauthenticated accounts from retrieving
+    if self.auth
+      response = Account.request(:retrieve, {:name => self.name, :password => self.password, :since => self.last_retrieve.to_i})
+      items = self.check_response(response)
+      # Check that we got a hash response, there's a list, and status = 1 (changes available)
+      if items.class == Hash && items['list'] && items['status'] == 1
+        items['list'].each_value do |item|
+          # Protect against a bad response
+          if item['item_id']
+            # Protect against duplicate entries
+            match = LineItem.where(:account_id => self.id, :item_id => item['item_id']).first
+            if match
+              # Update an entry if it already exists
+              # This probably won't matter--we should only want to send new items to a kindle
+              match.url = item['url']
+              match.title = item['title']
+              match.save
+            else
+              LineItem.create(:account_id => self.id, :item_id => item['item_id'].to_i, :title => item['title'], :url => item['url'])
+            end
+          end
+        end
       end
-    end      
+      self.last_retrieve = Time.now
+    end
+  end
+  
+  def check_response(response)
+    r = ActiveSupport::JSON.decode(response)
+    if r.class == String
+      if response.include?("200")
+        true
+      elsif response.include?("401")
+        errors.add(:name, "could not authenticate with ReadItLater")
+        self.auth = false
+      else
+        errors.add(:base, "Error contacting ReadItLater servers. Please try again later")
+      end
+    else
+      r
+    end
   end
   
   def authenticate_with_read_it_later
-    response = Account.request(:auth, {:name => self.name, :password => self.password})
-    if response.include?("200")
-      true
-    elsif response.include?("401")
-      errors.add(:name, "did not authenticate with ReadItLater")
-    else
-      errors.add(:base, "Error contacting ReadItLater servers. Please try again later")
-    end
+    self.auth = true if self.check_response(Account.request(:auth, {:name => self.name, :password => self.password}))
   end
   
   private
@@ -45,7 +71,7 @@ class Account < ActiveRecord::Base
     case type
     when :retrieve
       url = URI.parse(CONFIG['method_url'] + "get")
-      data = "?username=#{options[:name]}&password=#{options[:password]}"
+      data = "?username=#{options[:name]}&password=#{options[:password]}&since=#{options[:since]}"
     when :text
       url = URI.parse(CONFIG['text_method_url'])
       data = "?url=#{options[:url]}"
@@ -58,5 +84,9 @@ class Account < ActiveRecord::Base
     http.use_ssl = true
     request = Net::HTTP::Get.new(url.path + data)
     http.request(request).body
+  end
+  
+  def set_last_retrieve
+    self.last_retrieve ||= Time.now
   end
 end

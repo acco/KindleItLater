@@ -29,6 +29,7 @@ gem 'sqlite3'
 group :test, :development do
   gem 'rspec-rails'
   gem 'rspec-mocks', :git => 'git://github.com/rspec/rspec-mocks.git'
+  gem 'timecop'
 end
 group :test do
   gem 'factory_girl_rails'
@@ -37,3 +38,4 @@ group :test do
 end
 
 gem 'sorcery'
+gem 'chronic'

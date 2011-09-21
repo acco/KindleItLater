@@ -22,4 +22,11 @@ describe LineItem do
     end
     LineItem.should have(2).record
   end
+  
+  it "should set title to URL base if title is blank" do
+    item = Factory.build(:line_item, :title => nil, :url => "http://www.nfl.com/some/text/here")
+    item.save
+    item.reload
+    item.title.should eql("nfl.com")
+  end
 end
