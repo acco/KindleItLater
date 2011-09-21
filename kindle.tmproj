@@ -3,10 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>config/application.rb</string>
+	<string>lib/api/ril_helper.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>kindle</string>
 			<key>regexFolderFilter</key>
@@ -17,27 +19,41 @@
 		<dict>
 			<key>filename</key>
 			<string>../../settings/kindle.yaml</string>
-			<key>selected</key>
-			<true/>
+			<key>lastUsed</key>
+			<date>2011-09-21T16:44:31Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>248</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Gemfile</key>
+		<key>../../settings/kindle.yaml</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>Gemfile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>2</integer>
 		</dict>
 		<key>Gemfile.lock</key>
 		<dict>
@@ -100,9 +116,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>43</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/models/line_item.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -128,9 +158,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>58</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>19</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -193,6 +223,134 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>db/migrate/20110920005804_sorcery_remember_me.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110920013648_add_kindle_to_users.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110920013833_create_accounts.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110920014041_add_user_id_to_accounts.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110921002916_add_last_retrieve_to_accounts.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110921004103_create_line_items.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+		</dict>
+		<key>db/migrate/20110921011217_add_title_to_line_items.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>db/migrate/20110921014332_add_item_id_to_line_items.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>db/schema.rb</key>
 		<dict>
 			<key>caret</key>
@@ -205,16 +363,58 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>3</integer>
+			<integer>9</integer>
+		</dict>
+		<key>lib/api/ril_helper.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>25</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>spec/factories.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>spec/fixtures/user_mailer/activation_needed_email</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>spec/helpers/sessions_helper_spec.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -226,14 +426,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>53</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>120</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>85</integer>
+		</dict>
+		<key>spec/models/line_item_spec.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>54</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>19</integer>
 		</dict>
 		<key>spec/models/user_spec.rb</key>
 		<dict>
@@ -247,7 +461,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>12</integer>
 		</dict>
 		<key>spec/spec_helper.rb</key>
 		<dict>
@@ -281,20 +495,34 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Gemfile</string>
+		<string>db/migrate/20110921014332_add_item_id_to_line_items.rb</string>
 		<string>db/migrate/20110920005803_sorcery_core.rb</string>
 		<string>db/schema.rb</string>
 		<string>config/initializers/sorcery.rb</string>
 		<string>app/models/account.rb</string>
+		<string>db/migrate/20110921011217_add_title_to_line_items.rb</string>
+		<string>spec/models/line_item_spec.rb</string>
+		<string>lib/api/ril_helper.rb</string>
+		<string>../../settings/kindle.yaml</string>
 		<string>config/application.rb</string>
 		<string>app/models/user.rb</string>
+		<string>app/models/line_item.rb</string>
 		<string>spec/models/account_spec.rb</string>
+		<string>spec/helpers/sessions_helper_spec.rb</string>
 		<string>app/controllers/users_controller.rb</string>
 		<string>app/controllers/sessions_controller.rb</string>
 		<string>config/routes.rb</string>
 		<string>app/controllers/application_controller.rb</string>
 		<string>spec/spec_helper.rb</string>
+		<string>spec/fixtures/user_mailer/activation_needed_email</string>
 		<string>test/test_helper.rb</string>
 		<string>spec/factories.rb</string>
+		<string>db/migrate/20110921004103_create_line_items.rb</string>
+		<string>db/migrate/20110921002916_add_last_retrieve_to_accounts.rb</string>
+		<string>db/migrate/20110920014041_add_user_id_to_accounts.rb</string>
+		<string>db/migrate/20110920013833_create_accounts.rb</string>
+		<string>db/migrate/20110920013648_add_kindle_to_users.rb</string>
+		<string>db/migrate/20110920005804_sorcery_remember_me.rb</string>
 		<string>spec/models/user_spec.rb</string>
 		<string>config/database.yml</string>
 		<string>Gemfile.lock</string>
@@ -302,6 +530,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{-1282, 187}, {886, 735}}</string>
+	<string>{{-1261, 260}, {1011, 735}}</string>
 </dict>
 </plist>

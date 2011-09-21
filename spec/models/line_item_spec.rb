@@ -29,4 +29,28 @@ describe LineItem do
     item.reload
     item.title.should eql("nfl.com")
   end
+  
+  it "should switch to sent when successfully emailed" do
+    accnt = Factory.create(:account)
+    item = Factory.create(:line_item, :sent => false, :account => accnt)
+    item.stub(:mail).and_return(true)
+    item.send_to_kindle
+    item.sent.should be_true
+  end
+  
+  it "should fetch the body of a webpage" do
+    item = Factory.create(:line_item, :url => 'http://en.wikipedia.org/wiki/Ruby_(programming_language)')
+    item.body.should match(/Yukihiro Matsumoto/i)
+  end
+  
+  it "should destroy itself if it accesses a bad webpage" do
+    item = Factory.create(:line_item, :url => 'http://bad.url.first')
+    item.body
+    LineItem.should have(0).records
+  end
+  
+  it "should retrieve all pages of a webpage" do
+    item = Factory.create(:line_item, :url => 'http://www.theatlantic.com/magazine/archive/2011/10/the-shame-of-college-sports/8643/')
+    item.body.should match(/Vaccaro is officially an unpaid consultant to the plaintiffs/)
+  end
 end

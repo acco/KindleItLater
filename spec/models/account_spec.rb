@@ -118,6 +118,5 @@ describe Account do
     account.stub(:check_response).and_return(h)
     account.retrieve_items
     account.line_items.first.url.should eql("http://url.second.com")
-  end
-    
+  end 
 end

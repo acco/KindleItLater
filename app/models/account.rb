@@ -1,6 +1,5 @@
-require 'net/https'
-
 class Account < ActiveRecord::Base
+  include RILHelper
   belongs_to :user
   has_many :line_items, :dependent => :destroy
   before_save :set_last_retrieve
@@ -20,7 +19,7 @@ class Account < ActiveRecord::Base
     # "since":1316567382,"complete":1}
     # Prevent unauthenticated accounts from retrieving
     if self.auth
-      response = Account.request(:retrieve, {:name => self.name, :password => self.password, :since => self.last_retrieve.to_i})
+      response = ril_request(:retrieve, {:name => self.name, :password => self.password, :since => self.last_retrieve.to_i})
       items = self.check_response(response)
       # Check that we got a hash response, there's a list, and status = 1 (changes available)
       if items.class == Hash && items['list'] && items['status'] == 1
@@ -62,29 +61,10 @@ class Account < ActiveRecord::Base
   end
   
   def authenticate_with_read_it_later
-    self.auth = true if self.check_response(Account.request(:auth, {:name => self.name, :password => self.password}))
+    self.auth = true if self.check_response(ril_request(:auth, {:name => self.name, :password => self.password}))
   end
   
   private
-
-  def Account.request(type, options={})
-    case type
-    when :retrieve
-      url = URI.parse(CONFIG['method_url'] + "get")
-      data = "?username=#{options[:name]}&password=#{options[:password]}&since=#{options[:since]}"
-    when :text
-      url = URI.parse(CONFIG['text_method_url'])
-      data = "?url=#{options[:url]}"
-    when :auth
-      url = URI.parse(CONFIG['method_url'] + "auth")
-      data = "?username=#{options[:name]}&password=#{options[:password]}"
-    end
-    data = data + "&apikey=#{CONFIG['read_it_later_api_key']}"
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(url.path + data)
-    http.request(request).body
-  end
   
   def set_last_retrieve
     self.last_retrieve ||= Time.now
