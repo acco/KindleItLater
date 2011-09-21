@@ -40,7 +40,7 @@ describe User do
   end
   
   it "should reject an invalid kindle_email from form" do
-    ['in valid', 'with$symbols', '()', '#erroneous'].each do |test|
+    ['in valid', 'with$symbols', '()', '#erroneous', 'basically invalid@kindle.com'].each do |test|
       user = Factory.build(:user, :kindle => nil, :kindle_email => test)
       user.save
       User.should have(0).record
